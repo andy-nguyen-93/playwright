@@ -1,0 +1,21 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Playwright is a framework for Web Testing and Automation. Test cases in this project are created based on [SauceDemo](https://www.saucedemo.com)",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andy-nguyen-93/playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andy-nguyen-93/playwright/issues"
+  },
+  "homepage": "https://github.com/andy-nguyen-93/playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.34.3"
+  }
+}
