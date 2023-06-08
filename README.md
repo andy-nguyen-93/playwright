@@ -23,3 +23,4 @@ npm install
 1.  Validate that user cannot login without username and password - (Use Codegen)
 2.  Validate that user cannot login without username - (Add BaseURL)
 3.  Validate that user cannot login without password - (Add PageObject)
+4.  Validate that user cannot login with invalid user and valid password - (Add Enums)

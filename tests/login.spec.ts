@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/login.page";
+import { Account, Message, Password } from "../utils/enums.utils";
 
 test.describe("Login Test Cases", () => {
   let loginPage: LoginPage;
@@ -57,5 +58,21 @@ test.describe("Login Test Cases", () => {
 
     // Validate that error message is displayed correctly
     await loginPage.verifyErrorMessage("Epic sadface: Password is required");
+  });
+
+  test("04. Validate that user cannot login with invalid user and valid password", async ({
+    page,
+  }) => {
+    // Generate login page
+    loginPage = new LoginPage(page);
+
+    // Navigate to login page
+    await loginPage.goToLoginPage();
+
+    // Login with invalid user and valid password
+    await loginPage.login(Account.INVALID, Password.ALL);
+
+    // Validate that error message is displayed correctly
+    await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
   });
 });
