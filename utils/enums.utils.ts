@@ -1,5 +1,6 @@
 enum Account {
-  INVALID = "invalid_account",
+  INVALID = "invalid_user",
+  STANDARD = "standard_user",
 }
 
 enum Password {
@@ -8,6 +9,14 @@ enum Password {
 
 enum Message {
   LOGIN_FAIL = "Epic sadface: Username and password do not match any user in this service",
+  ORDER_COMPLETE = "Thank you for your order!",
+  ORDER_INFORMATION = "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
 }
 
-export { Account, Password, Message };
+enum User {
+  FIRSTNAME = "John",
+  LASTNAME = "Calvin",
+  POSTALCODE = "99501",
+}
+
+export { Account, Password, Message, User };

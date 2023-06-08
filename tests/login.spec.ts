@@ -5,7 +5,7 @@ import { Account, Message, Password } from "../utils/enums.utils";
 test.describe("Login Test Cases", () => {
   let loginPage: LoginPage;
 
-  test("01. Validate that user cannot login without username and password", async ({
+  test("LOGIN-01. Validate that user cannot login without username and password", async ({
     page,
   }) => {
     // Navigate to saucedemo page
@@ -23,7 +23,7 @@ test.describe("Login Test Cases", () => {
     );
   });
 
-  test("02. Validate that user cannot login without username", async ({
+  test("LOGIN-02. Validate that user cannot login without username", async ({
     page,
   }) => {
     // Navigate to saucedemo page
@@ -44,7 +44,7 @@ test.describe("Login Test Cases", () => {
     );
   });
 
-  test("03. Validate that user cannot login without password", async ({
+  test("LOGIN-03. Validate that user cannot login without password", async ({
     page,
   }) => {
     // Generate login page
@@ -60,7 +60,7 @@ test.describe("Login Test Cases", () => {
     await loginPage.verifyErrorMessage("Epic sadface: Password is required");
   });
 
-  test("04. Validate that user cannot login with invalid user and valid password", async ({
+  test("LOGIN-04. Validate that user cannot login with invalid user and valid password", async ({
     page,
   }) => {
     // Generate login page

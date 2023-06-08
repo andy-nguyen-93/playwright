@@ -20,7 +20,8 @@ npm install
 
 ## Test Cases
 
-1.  Validate that user cannot login without username and password - (Use Codegen)
-2.  Validate that user cannot login without username - (Add BaseURL)
-3.  Validate that user cannot login without password - (Add PageObject)
-4.  Validate that user cannot login with invalid user and valid password - (Add Enums)
+- LOGIN-01. Validate that user cannot login without username and password - (Use Codegen)
+- LOGIN-02. Validate that user cannot login without username - (Add BaseURL)
+- LOGIN-03. Validate that user cannot login without password - (Add PageObject)
+- LOGIN-04. Validate that user cannot login with invalid user and valid password - (Add Enums)
+- INVENTORY-01. Validate that standard user can buy all items - (Handle Multiple Elements)
