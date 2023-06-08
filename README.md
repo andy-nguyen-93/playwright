@@ -25,3 +25,4 @@ npm install
 - LOGIN-03. Validate that user cannot login without password - (Add PageObject)
 - LOGIN-04. Validate that user cannot login with invalid user and valid password - (Add Enums)
 - INVENTORY-01. Validate that standard user can buy all items - (Handle Multiple Elements)
+- INVENTORY-02. Validate that standard user can buy a single item - (Add BeforeEach and FakerJS )

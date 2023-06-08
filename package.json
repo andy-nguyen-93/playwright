@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/andy-nguyen-93/playwright#readme",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@playwright/test": "^1.34.3"
   }
 }
