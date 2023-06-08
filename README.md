@@ -20,4 +20,5 @@ npm install
 
 ## Test Cases
 
-- 01-login-without-username (User Codegen)
+1.  Validate that user cannot login without username and password - (Use Codegen)
+2.  Validate that user cannot login without username - (Add BaseURL)
