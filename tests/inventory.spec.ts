@@ -41,9 +41,9 @@ test.describe("Inventory Test Cases", () => {
     await inventoryPage.lnkShoppingCart.click();
 
     // Verify that the list of all item name in inventory page is same as in cart page
-    expect(await listInventoryItemName.allTextContents()).toEqual(
-      await cartPage.lblsItemName.allTextContents()
-    );
+    expect
+      .soft(await listInventoryItemName.allTextContents())
+      .toEqual(await cartPage.lblsItemName.allTextContents());
 
     // Click on Checkout button
     await cartPage.btnCheckout.click();
@@ -77,7 +77,7 @@ test.describe("Inventory Test Cases", () => {
     await inventoryPage.lnkShoppingCart.click();
 
     // Verify that the list of all item name in inventory page is same as in cart page
-    expect(await cartPage.lblsItemName.textContent()).toEqual(itemName);
+    expect.soft(await cartPage.lblsItemName.textContent()).toEqual(itemName);
 
     // Click on Checkout button
     await cartPage.btnCheckout.click();

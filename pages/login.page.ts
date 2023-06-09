@@ -1,18 +1,20 @@
 import { Page, Locator, expect } from "@playwright/test";
+import BasePage from "./base.page";
 
-class LoginPage {
-  private page: Page;
+class LoginPage extends BasePage {
+  protected page: Page;
   readonly txtLogin: Locator;
   readonly txtPassword: Locator;
   readonly btnLogin: Locator;
   readonly msgError: Locator;
 
   constructor(page: Page) {
+    super(page);
     this.page = page;
-    this.txtLogin = page.locator("[data-test=username]");
-    this.txtPassword = page.locator("[data-test=password]");
-    this.btnLogin = page.locator("[data-test=login-button]");
-    this.msgError = page.locator("[data-test=error]");
+    this.txtLogin = this.node("username");
+    this.txtPassword = this.node("password");
+    this.btnLogin = this.node("login-button");
+    this.msgError = this.node("error");
   }
 
   async goToLoginPage() {

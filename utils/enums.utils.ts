@@ -5,6 +5,7 @@ enum Account {
 
 enum Password {
   ALL = "secret_sauce",
+  INVALID = "invalid_password",
 }
 
 enum Message {

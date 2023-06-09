@@ -5,12 +5,17 @@ import { Account, Message, Password } from "../utils/enums.utils";
 test.describe("Login Test Cases", () => {
   let loginPage: LoginPage;
 
+  test.beforeEach(async ({ page }) => {
+    // Initialize login page
+    loginPage = new LoginPage(page);
+
+    // Navigate to login page
+    await loginPage.goToLoginPage();
+  });
+
   test("LOGIN-01. Validate that user cannot login without username and password", async ({
     page,
   }) => {
-    // Navigate to saucedemo page
-    await page.goto("https://www.saucedemo.com/");
-
     // Click on login button
     await page.locator('[data-test="login-button"]').click();
 
@@ -26,9 +31,6 @@ test.describe("Login Test Cases", () => {
   test("LOGIN-02. Validate that user cannot login without username", async ({
     page,
   }) => {
-    // Navigate to saucedemo page
-    await page.goto("/");
-
     // Fill password
     await page.locator('[data-test="password"]').fill("secret_sauce");
 
@@ -47,12 +49,6 @@ test.describe("Login Test Cases", () => {
   test("LOGIN-03. Validate that user cannot login without password", async ({
     page,
   }) => {
-    // Generate login page
-    loginPage = new LoginPage(page);
-
-    // Navigate to login page
-    await loginPage.goToLoginPage();
-
     // Login without password
     await loginPage.login("standard_user", "");
 
@@ -63,14 +59,18 @@ test.describe("Login Test Cases", () => {
   test("LOGIN-04. Validate that user cannot login with invalid user and valid password", async ({
     page,
   }) => {
-    // Generate login page
-    loginPage = new LoginPage(page);
-
-    // Navigate to login page
-    await loginPage.goToLoginPage();
-
     // Login with invalid user and valid password
     await loginPage.login(Account.INVALID, Password.ALL);
+
+    // Validate that error message is displayed correctly
+    await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
+  });
+
+  test("LOGIN-05. Validate that user cannot login with valid user and invalid password", async ({
+    page,
+  }) => {
+    // Login with invalid user and valid password
+    await loginPage.login(Account.STANDARD, Password.INVALID);
 
     // Validate that error message is displayed correctly
     await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
