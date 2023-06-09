@@ -12,6 +12,14 @@ class InventoryPage {
     this.lnkShoppingCart = page.locator(".shopping_cart_link");
     this.lblsItemName = page.locator(".inventory_item_name");
   }
+
+  async addItemToCart(itemIndex: number) {
+    await this.btnsAddToCart.nth(itemIndex).click();
+  }
+
+  async getItemName(itemIndex: number) {
+    return await this.lblsItemName.nth(itemIndex).textContent();
+  }
 }
 
 export default InventoryPage;

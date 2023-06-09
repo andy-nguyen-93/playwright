@@ -54,7 +54,7 @@ test.describe("Inventory Test Cases For Standard Account", () => {
     );
 
     // Verify checkout is completed successfully
-    await checkoutPage.verifyCheckoutSuccessfully();
+    await checkoutPage.validateCheckoutSuccessfully();
   });
 
   test("INVENTORY-02. Validate that standard user can buy a single item", async () => {
@@ -86,7 +86,7 @@ test.describe("Inventory Test Cases For Standard Account", () => {
     );
 
     // Verify checkout is completed successfully
-    await checkoutPage.verifyCheckoutSuccessfully();
+    await checkoutPage.validateCheckoutSuccessfully();
   });
 });
 
@@ -142,7 +142,7 @@ test.describe("Inventory Test Cases For Valid Accounts", () => {
       );
 
       // Verify checkout is completed successfully
-      await checkoutPage.verifyCheckoutSuccessfully();
+      await checkoutPage.validateCheckoutSuccessfully();
     });
   }
 });

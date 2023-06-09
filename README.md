@@ -35,3 +35,4 @@ npx playwright test {filename}
 - INVENTORY-01. Validate that standard user can buy all items - (Handle Multiple Elements)
 - INVENTORY-02. Validate that standard user can buy a single item - (Add BeforeEach and FakerJS)
 - INVENTORY-03. Validate that valid users can buy a single item - (Parameterize Tests)
+- SERIAL-01_04. Test cases about behaviors of problem user - (Serialize Tests)

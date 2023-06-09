@@ -12,6 +12,7 @@ class CheckoutPage {
   readonly lblCompleteHeader: Locator;
   readonly lblCompleteText: Locator;
   readonly btnBackHome: Locator;
+  readonly msgError: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,6 +25,7 @@ class CheckoutPage {
     this.lblCompleteHeader = page.locator(".complete-header");
     this.lblCompleteText = page.locator(".complete-text");
     this.btnBackHome = page.locator("[data-test=back-to-products]");
+    this.msgError = page.locator("[data-test=error]");
   }
 
   async completeCheckout(
@@ -31,14 +33,22 @@ class CheckoutPage {
     lastName: string,
     postalCode: string
   ) {
-    await this.txtFirstName.fill(firstName);
-    await this.txtLastName.fill(lastName);
-    await this.txtPostalCode.fill(postalCode);
+    await this.fillCheckoutForm(firstName, lastName, postalCode);
     await this.btnContinue.click();
     await this.btnFinish.click();
   }
 
-  async verifyCheckoutSuccessfully() {
+  async fillCheckoutForm(
+    firstName: string,
+    lastName: string,
+    postalCode: string
+  ) {
+    await this.txtFirstName.fill(firstName);
+    await this.txtLastName.fill(lastName);
+    await this.txtPostalCode.fill(postalCode);
+  }
+
+  async validateCheckoutSuccessfully() {
     await expect(this.icoSuccess).toBeVisible();
     await expect(this.lblCompleteHeader).toBeVisible();
     await expect(this.lblCompleteHeader).toHaveText(Message.ORDER_COMPLETE);
@@ -46,6 +56,14 @@ class CheckoutPage {
     await expect(this.lblCompleteText).toHaveText(Message.ORDER_INFORMATION);
     await expect(this.btnBackHome).toBeVisible();
     await expect(this.btnBackHome).toBeEnabled();
+  }
+
+  async validateCheckoutForm() {
+    await expect(this.txtFirstName).toBeVisible();
+    await expect(this.txtLastName).toBeVisible();
+    await expect(this.txtPostalCode).toBeVisible();
+    await expect(this.btnContinue).toBeVisible();
+    await expect(this.btnContinue).toBeEnabled();
   }
 }
 
