@@ -26,9 +26,7 @@ test.describe("Inventory Test Cases", () => {
     await loginPage.login(Account.STANDARD, Password.ALL);
   });
 
-  test("INVENTORY-01. Validate that standard user can buy all items", async ({
-    page,
-  }) => {
+  test("INVENTORY-01. Validate that standard user can buy all items", async () => {
     // Get the list of all item name in inventory page
     const listInventoryItemName = inventoryPage.lblsItemName;
 
@@ -59,9 +57,7 @@ test.describe("Inventory Test Cases", () => {
     await checkoutPage.verifyCheckoutSuccessfully();
   });
 
-  test("INVENTORY-02. Validate that standard user can buy a single item", async ({
-    page,
-  }) => {
+  test("INVENTORY-02. Validate that standard user can buy a single item", async () => {
     // Generate random item index
     const itemIndex = faker.number.int(5);
 

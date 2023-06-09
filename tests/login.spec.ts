@@ -46,9 +46,7 @@ test.describe("Login Test Cases", () => {
     );
   });
 
-  test("LOGIN-03. Validate that user cannot login without password", async ({
-    page,
-  }) => {
+  test("LOGIN-03. Validate that user cannot login without password", async () => {
     // Login without password
     await loginPage.login("standard_user", "");
 
@@ -56,9 +54,7 @@ test.describe("Login Test Cases", () => {
     await loginPage.verifyErrorMessage("Epic sadface: Password is required");
   });
 
-  test("LOGIN-04. Validate that user cannot login with invalid user and valid password", async ({
-    page,
-  }) => {
+  test("LOGIN-04. Validate that user cannot login with invalid user and valid password", async () => {
     // Login with invalid user and valid password
     await loginPage.login(Account.INVALID, Password.ALL);
 
@@ -66,11 +62,17 @@ test.describe("Login Test Cases", () => {
     await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
   });
 
-  test("LOGIN-05. Validate that user cannot login with valid user and invalid password", async ({
-    page,
-  }) => {
-    // Login with invalid user and valid password
+  test("LOGIN-05. Validate that user cannot login with valid user and invalid password", async () => {
+    // Login with valid user and invalid password
     await loginPage.login(Account.STANDARD, Password.INVALID);
+
+    // Validate that error message is displayed correctly
+    await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
+  });
+
+  test("LOGIN-06. Validate that user cannot login with invalid user and invalid password", async () => {
+    // Login with invalid user and invalid password
+    await loginPage.login(Account.INVALID, Password.INVALID);
 
     // Validate that error message is displayed correctly
     await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
