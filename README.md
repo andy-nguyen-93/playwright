@@ -21,6 +21,11 @@ npm install
 
 ## Test Cases
 
+```Shell
+# Run from your project's root directory
+npx playwright test {filename}
+```
+
 - LOGIN-01. Validate that user cannot login without username and password - (Use Codegen)
 - LOGIN-02. Validate that user cannot login without username - (Add BaseURL)
 - LOGIN-03. Validate that user cannot login without password - (Add PageObject)
@@ -28,4 +33,5 @@ npm install
 - LOGIN-05. Validate that user cannot login with valid user and invalid password - (Add Base Page)
 - LOGIN-06. Validate that user cannot login with invalid user and invalid password - (Add ESLint)
 - INVENTORY-01. Validate that standard user can buy all items - (Handle Multiple Elements)
-- INVENTORY-02. Validate that standard user can buy a single item - (Add BeforeEach and FakerJS )
+- INVENTORY-02. Validate that standard user can buy a single item - (Add BeforeEach and FakerJS)
+- INVENTORY-03. Validate that valid users can buy a single item - (Parameterize Tests)

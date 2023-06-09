@@ -1,6 +1,7 @@
 enum Account {
   INVALID = "invalid_user",
   STANDARD = "standard_user",
+  PERFORMANCE_GLITCH = "performance_glitch_user",
 }
 
 enum Password {
