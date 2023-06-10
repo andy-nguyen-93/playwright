@@ -15,6 +15,7 @@ enum Message {
   ORDER_COMPLETE = "Thank you for your order!",
   ORDER_INFORMATION = "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
   REQUIRE_LASTNAME = "Error: Last Name is required",
+  REQUIRE_LOGIN = "Epic sadface: You can only access '/inventory.html' when you are logged in.",
 }
 
 enum User {
