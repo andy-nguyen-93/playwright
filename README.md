@@ -32,6 +32,7 @@ npx playwright test {filename}
 - LOGIN-04. Validate that user cannot login with invalid user and valid password - (Add Enums)
 - LOGIN-05. Validate that user cannot login with valid user and invalid password - (Add Base Page)
 - LOGIN-06. Validate that user cannot login with invalid user and invalid password - (Add ESLint)
+- LOGIN-07. Validate that locked out user cannot login to the system - (Add GitHub Actions)
 - INVENTORY-01. Validate that standard user can buy all items - (Handle Multiple Elements)
 - INVENTORY-02. Validate that standard user can buy a single item - (Add BeforeEach and FakerJS)
 - INVENTORY-03. Validate that valid users can buy a single item - (Parameterize Tests)

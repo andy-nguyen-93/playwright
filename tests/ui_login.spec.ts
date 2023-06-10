@@ -77,4 +77,12 @@ test.describe("Login Test Cases", () => {
     // Validate that error message is displayed correctly
     await loginPage.verifyErrorMessage(Message.LOGIN_FAIL);
   });
+
+  test("LOGIN-07. Validate that locked out user cannot login to the system", async () => {
+    // Login with invalid user and invalid password
+    await loginPage.login(Account.LOCKED_OUT, Password.ALL);
+
+    // Validate that error message is displayed correctly
+    await loginPage.verifyErrorMessage(Message.LOCKED_OUT_LOGIN);
+  });
 });

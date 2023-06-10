@@ -3,6 +3,7 @@ enum Account {
   STANDARD = "standard_user",
   PERFORMANCE_GLITCH = "performance_glitch_user",
   PROBLEM = "problem_user",
+  LOCKED_OUT = "locked_out_user",
 }
 
 enum Password {
@@ -12,6 +13,7 @@ enum Password {
 
 enum Message {
   LOGIN_FAIL = "Epic sadface: Username and password do not match any user in this service",
+  LOCKED_OUT_LOGIN = "Epic sadface: Sorry, this user has been locked out.",
   ORDER_COMPLETE = "Thank you for your order!",
   ORDER_INFORMATION = "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
   REQUIRE_LASTNAME = "Error: Last Name is required",
