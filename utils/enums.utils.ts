@@ -37,4 +37,8 @@ enum Url {
   CHECKOUT_COMPLETE = "/checkout-complete.html",
 }
 
-export { Account, Password, Message, User, Url };
+enum Site {
+  SAUCE_LAB = "https://saucelabs.com/",
+}
+
+export { Account, Password, Message, User, Url, Site };
