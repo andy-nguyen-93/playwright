@@ -37,3 +37,4 @@ npx playwright test {filename}
 - INVENTORY-03. Validate that valid users can buy a single item - (Parameterize Tests)
 - SERIAL-01_04. Test cases about behaviors of problem user - (Serialize Tests)
 - NL-01. Validate that user cannot access to inventory page without authentication - (Add GlobalSetup)
+- NL-02. Validate that user cannot access certain pages without authentication - (Add Allure Report)

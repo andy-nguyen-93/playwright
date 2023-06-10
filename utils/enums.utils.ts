@@ -16,6 +16,8 @@ enum Message {
   ORDER_INFORMATION = "Your order has been dispatched, and will arrive just as fast as the pony can get there!",
   REQUIRE_LASTNAME = "Error: Last Name is required",
   REQUIRE_LOGIN = "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+  REQUIRE_LOGIN_FIRST = "Epic sadface: You can only access '",
+  REQUIRE_LOGIN_LAST = "' when you are logged in.",
 }
 
 enum User {
@@ -25,7 +27,12 @@ enum User {
 }
 
 enum Url {
-  INVENTORY = "https://www.saucedemo.com/inventory.html",
+  INVENTORY = "/inventory.html",
+  ITEM = "/inventory-item.html",
+  CART = "/cart.html",
+  CHECKOUT_ONE = "/checkout-step-one.html",
+  CHECKOUT_TWO = "/checkout-step-two.html",
+  CHECKOUT_COMPLETE = "/checkout-complete.html",
 }
 
 export { Account, Password, Message, User, Url };
