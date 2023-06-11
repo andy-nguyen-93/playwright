@@ -17,7 +17,7 @@ class LoginPage extends BasePage {
     this.msgError = this.node("error");
   }
 
-  async goToLoginPage() {
+  async goto() {
     await this.page.goto("/");
   }
 

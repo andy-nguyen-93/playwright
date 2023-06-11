@@ -20,7 +20,7 @@ test.describe("Inventory Test Cases For Standard Account", () => {
     checkoutPage = new CheckoutPage(page);
 
     // Navigate to login page
-    await loginPage.goToLoginPage();
+    await loginPage.goto();
 
     // Login with standard account
     await loginPage.login(Account.STANDARD, Password.ALL);
@@ -106,7 +106,7 @@ test.describe("Inventory Test Cases For Valid Accounts", () => {
     checkoutPage = new CheckoutPage(page);
 
     // Navigate to login page
-    await loginPage.goToLoginPage();
+    await loginPage.goto();
   });
 
   for (const account of validAccounts) {

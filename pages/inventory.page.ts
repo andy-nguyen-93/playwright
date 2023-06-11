@@ -9,6 +9,8 @@ class InventoryPage {
   readonly lblLogo: Locator;
   readonly lblActiveOption: Locator;
   readonly ctnInventory: Locator;
+  readonly btnMenu: Locator;
+  readonly btnLogout: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -18,6 +20,8 @@ class InventoryPage {
     this.lblLogo = page.locator(".app_logo");
     this.lblActiveOption = page.locator(".active_option");
     this.ctnInventory = page.locator(".inventory_list");
+    this.btnMenu = page.locator("#react-burger-menu-btn");
+    this.btnLogout = page.locator("#logout_sidebar_link");
   }
 
   async addItemToCart(itemIndex: number) {
@@ -26,6 +30,11 @@ class InventoryPage {
 
   async getItemName(itemIndex: number) {
     return await this.lblsItemName.nth(itemIndex).textContent();
+  }
+
+  async logout() {
+    await this.btnMenu.click();
+    await this.btnLogout.click();
   }
 
   async validateUI() {

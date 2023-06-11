@@ -13,7 +13,7 @@ test.describe("Login Test Cases", () => {
     inventoryPage = new InventoryPage(page);
 
     // Navigate to login page
-    await loginPage.goToLoginPage();
+    await loginPage.goto();
   });
 
   test("LOGIN-01. Validate that user cannot login without username and password", async ({

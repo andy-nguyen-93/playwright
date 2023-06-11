@@ -24,7 +24,7 @@ test.describe.serial("Test Cases Which Run Sequentially", () => {
     checkoutPage = new CheckoutPage(page);
 
     // Navigate to login page
-    await loginPage.goToLoginPage();
+    await loginPage.goto();
   });
 
   test("SERIAL-01. Validate that problem user can login to the system", async () => {

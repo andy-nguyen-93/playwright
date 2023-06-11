@@ -40,4 +40,5 @@ npx playwright test {filename}
 - SERIAL-01_04. Test cases about behaviors of problem user - (Serialize Tests)
 - NL-01. Validate that user cannot access to inventory page without authentication - (Add GlobalSetup)
 - NL-02. Validate that user cannot access certain pages without authentication - (Add Allure Report)
+- NL-03. Validate that standard user can logout - (Use Fixture)
 - API-01. API-01. Validate that About link is working - (API Test)
