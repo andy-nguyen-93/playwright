@@ -1,13 +1,16 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/login.page";
-import { Account, Message, Password } from "../utils/enums.utils";
+import { Account, Message, Password, Url } from "../utils/enums.utils";
+import InventoryPage from "../pages/inventory.page";
 
 test.describe("Login Test Cases", () => {
   let loginPage: LoginPage;
+  let inventoryPage: InventoryPage;
 
   test.beforeEach(async ({ page }) => {
     // Initialize login page
     loginPage = new LoginPage(page);
+    inventoryPage = new InventoryPage(page);
 
     // Navigate to login page
     await loginPage.goToLoginPage();
@@ -85,4 +88,22 @@ test.describe("Login Test Cases", () => {
     // Validate that error message is displayed correctly
     await loginPage.verifyErrorMessage(Message.LOCKED_OUT_LOGIN);
   });
+
+  const successLoginData = JSON.parse(
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    JSON.stringify(require("../data/successLogin.json"))
+  );
+
+  for (const data of successLoginData) {
+    test(`LOGIN-08. Validate that ${data.username} can login to the system`, async ({
+      page,
+    }) => {
+      // Login with invalid user and invalid password
+      await loginPage.login(data.username, data.password);
+
+      // Validate that user login successfully
+      await expect(page).toHaveURL(Url.INVENTORY);
+      await inventoryPage.validateUI();
+    });
+  }
 });

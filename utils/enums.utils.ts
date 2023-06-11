@@ -41,4 +41,12 @@ enum Site {
   SAUCE_LAB = "https://saucelabs.com/",
 }
 
-export { Account, Password, Message, User, Url, Site };
+enum Txt {
+  LOGO = "Swag Labs",
+}
+
+enum Sort {
+  NAME_ASC = "Name (A to Z)",
+}
+
+export { Account, Password, Message, User, Url, Site, Txt, Sort };
