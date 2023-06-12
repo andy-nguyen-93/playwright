@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/login.page";
 import { Account, Message, Password, Url } from "../utils/enums.utils";
 import InventoryPage from "../pages/inventory.page";
+import data from "../data/successLogin.json";
 
 test.describe("Login Test Cases", () => {
   let loginPage: LoginPage;
@@ -89,10 +90,7 @@ test.describe("Login Test Cases", () => {
     await loginPage.verifyErrorMessage(Message.LOCKED_OUT_LOGIN);
   });
 
-  const successLoginData = JSON.parse(
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    JSON.stringify(require("../data/successLogin.json"))
-  );
+  const successLoginData = JSON.parse(JSON.stringify(data));
 
   for (const data of successLoginData) {
     test(`LOGIN-08. Validate that ${data.username} can login to the system`, async ({

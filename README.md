@@ -5,6 +5,12 @@ Playwright is a framework for Web Testing and Automation. Test cases in this pro
 ## Installation
 
 - Install [NodeJS](https://nodejs.org/en)
+- Clone the repository
+
+```Shell
+git clone https://github.com/andy-nguyen-93/playwright.git
+```
+
 - Run the init command.
 
 ```Shell
@@ -41,4 +47,4 @@ npx playwright test {filename}
 - NL-01. Validate that user cannot access to inventory page without authentication - (Add GlobalSetup)
 - NL-02. Validate that user cannot access certain pages without authentication - (Add Allure Report)
 - NL-03. Validate that standard user can logout - (Use Fixture)
-- API-01. API-01. Validate that About link is working - (API Test)
+- API-01. Validate that About link is working - (API Test)

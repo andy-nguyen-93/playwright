@@ -40,6 +40,7 @@ enum Url {
 enum Site {
   SAUCE_LAB = "https://saucelabs.com/",
   SAUCE_DEMO = "https://www.saucedemo.com/",
+  INVENTORY = "https://www.saucedemo.com/inventory.html",
 }
 
 enum Txt {
