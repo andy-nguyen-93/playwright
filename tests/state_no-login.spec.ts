@@ -3,6 +3,7 @@ import LoginPage from "../pages/login.page";
 import { Message, Site, Url } from "../utils/enums.utils";
 import { customTest } from "../fixtures/data.fixture";
 import InventoryPage from "../pages/inventory.page";
+import AxeBuilder from "@axe-core/playwright";
 
 test.describe("Test Cases With No Login State", () => {
   test.use({ storageState: "states/noLoginState.json" });
@@ -10,12 +11,15 @@ test.describe("Test Cases With No Login State", () => {
   let loginPage: LoginPage;
   let inventoryPage: InventoryPage;
 
+  test.beforeEach(async ({ page }) => {
+    // Initialize login page
+    loginPage = new LoginPage(page);
+    inventoryPage = new InventoryPage(page);
+  });
+
   test("NL-01. Validate that user cannot access to inventory page without authentication", async ({
     page,
   }) => {
-    // Initialize login page
-    loginPage = new LoginPage(page);
-
     // Go to inventory page
     await page.goto("/inventory.html");
 
@@ -27,9 +31,6 @@ test.describe("Test Cases With No Login State", () => {
     test(`NL-02. Validate that user cannot access to ${url} without authentication`, async ({
       page,
     }) => {
-      // Initialize login page
-      loginPage = new LoginPage(page);
-
       // Go to inventory page
       await page.goto(url);
 
@@ -43,10 +44,6 @@ test.describe("Test Cases With No Login State", () => {
   customTest(
     "NL-03. Validate that standard user can logout",
     async ({ page, standard_user }) => {
-      // Initialize login page
-      loginPage = new LoginPage(page);
-      inventoryPage = new InventoryPage(page);
-
       // Go to login page
       await loginPage.goto();
 
@@ -60,4 +57,36 @@ test.describe("Test Cases With No Login State", () => {
       await expect(page).toHaveURL(Site.SAUCE_DEMO);
     }
   );
+
+  test("NL-04. Accessibility Testing", async ({ page }, testInfo) => {
+    // Go to login page
+    await loginPage.goto();
+
+    // Analyze the page with axe
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+
+    // Attached the violations to the test report
+    await testInfo.attach("accessibility-scan-results", {
+      body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+      contentType: "application/json",
+    });
+
+    // Violations are not empty
+    expect(accessibilityScanResults.violations).not.toEqual([]);
+
+    /* Console log the violations ()
+
+      const violation = accessibilityScanResults.violations;
+      violation.forEach(function (entry) {
+        console.log(entry.impact + " " + entry.description);
+      });
+
+    */
+
+    /* Expect violations to be empty (Currently commented because SauceDemo is not designed for accessibility test)
+
+      expect(accessibilityScanResults.violations).toEqual([]);
+
+    */
+  });
 });
