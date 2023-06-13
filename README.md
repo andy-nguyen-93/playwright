@@ -48,4 +48,5 @@ npx playwright test {filename}
 - NL-02. Validate that user cannot access certain pages without authentication - (Add Allure Report)
 - NL-03. Validate that standard user can logout - (Use Fixture)
 - NL-04. Accessibility Testing - (Use AxeBuilder)
+- NL-05. Visual Testing - (Compare Snapshot)
 - API-01. Validate that About link is working - (API Test)

@@ -1,20 +1,27 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/login.page";
-import { Message, Site, Url } from "../utils/enums.utils";
+import { Account, Message, Password, Site, Url } from "../utils/enums.utils";
 import { customTest } from "../fixtures/data.fixture";
 import InventoryPage from "../pages/inventory.page";
 import AxeBuilder from "@axe-core/playwright";
+import CartPage from "../pages/cart.page";
+import { faker } from "@faker-js/faker";
+import CheckoutPage from "../pages/checkout.page";
 
 test.describe("Test Cases With No Login State", () => {
   test.use({ storageState: "states/noLoginState.json" });
 
   let loginPage: LoginPage;
   let inventoryPage: InventoryPage;
+  let cartPage: CartPage;
+  let checkoutPage: CheckoutPage;
 
   test.beforeEach(async ({ page }) => {
     // Initialize login page
     loginPage = new LoginPage(page);
     inventoryPage = new InventoryPage(page);
+    cartPage = new CartPage(page);
+    checkoutPage = new CheckoutPage(page);
   });
 
   test("NL-01. Validate that user cannot access to inventory page without authentication", async ({
@@ -88,5 +95,31 @@ test.describe("Test Cases With No Login State", () => {
       expect(accessibilityScanResults.violations).toEqual([]);
 
     */
+  });
+
+  test("NL-05. Visual Testing", async ({ page }) => {
+    // Test visual of login page
+    await loginPage.goto();
+    await expect(page).toHaveScreenshot({ fullPage: true });
+
+    // Test visual of inventory page
+    await loginPage.login(Account.STANDARD, Password.ALL);
+    await expect(page).toHaveScreenshot({ fullPage: true });
+
+    // Test visual of cart page
+    await inventoryPage.lnkShoppingCart.click();
+    await expect(page).toHaveScreenshot({ fullPage: true });
+
+    // Test visual of checkout page
+    await cartPage.btnCheckout.click();
+    await expect(page).toHaveScreenshot({ fullPage: true });
+
+    // Test visual of thank you page
+    await checkoutPage.completeCheckout(
+      faker.person.firstName(),
+      faker.person.lastName(),
+      faker.location.zipCode()
+    );
+    await expect(page).toHaveScreenshot({ fullPage: true });
   });
 });
