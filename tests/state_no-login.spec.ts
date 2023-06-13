@@ -97,7 +97,7 @@ test.describe("Test Cases With No Login State", () => {
     */
   });
 
-  test("NL-05. Visual Testing", async ({ page }) => {
+  test("NL-05. Visual Testing @visual", async ({ page }) => {
     // Test visual of login page
     await loginPage.goto();
     await expect(page).toHaveScreenshot({ fullPage: true });
@@ -121,5 +121,22 @@ test.describe("Test Cases With No Login State", () => {
       faker.location.zipCode()
     );
     await expect(page).toHaveScreenshot({ fullPage: true });
+  });
+
+  test("NL-06. Performance Testing", async ({ page }) => {
+    // Create a new connection to an existing CDPSession to enable Performance Measurements
+    const client = await page.context().newCDPSession(page);
+
+    // Tell the DevTools session to record performnace metrics
+    await client.send("Performance.enable");
+
+    // Navigate to login page
+    await loginPage.goto();
+
+    // Login as performance glitch user
+    await loginPage.login(Account.PERFORMANCE_GLITCH, Password.ALL);
+
+    // Log performance metrics (https://chromedevtools.github.io/devtools-protocol/tot/Performance/#method-getMetrics)
+    console.log((await client.send("Performance.getMetrics")).metrics);
   });
 });
